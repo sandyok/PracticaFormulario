@@ -1,0 +1,61 @@
+<div class="container">
+  <div  [hidden]="submitted" style="margin-left: 350px; width: 470px;">
+    <p class="script"><span>Registro de Usuarios</span></p><br>
+  <form (ngSubmit)="onSubmit()" #usuarioForm="ngForm">
+    <div class="form-group">
+      <label for="nombre" style="color: #295F72; font-size: 16px;">Nombre</label>
+      <input type="text" class="form-control" id="nombre" required [(ngModel)]="model.nombre" name="nombre" #nombre="ngModel">
+     
+    </div>
+<br>
+    <div class="form-group">
+      <label for="apellidos" style="color: #295F72; font-size: 16px;">Apellidos</label>
+      <input type="text" class="form-control" id="apellidos" required [(ngModel)]="model.apellidos" name="apellidos" #apellidos="ngModel">
+     
+    </div>
+<br>
+    <div class="form-group">
+      <label for="genero" style="color: #295F72; font-size: 16px;">Genero</label>
+      <select class="form-control" id="genero" required [(ngModel)]="model.genero" name="genero">
+        <option *ngFor="let gener of genero" [value]="gener">{{gener}}</option>
+      </select>
+    </div>
+
+    <br>
+    <div class="form-group">
+      <label for="salario" style="color: #295F72; font-size: 16px;">Salario</label>
+      <input type="text" class="form-control" id="salario" required [(ngModel)]="model.salario" name="salario" #salario="ngModel">
+      
+    </div>
+<br>
+    <button type="submit" class="btn btn-success" style="background-color: #00C2A9; font-weight: bold; font-size: 15px;" [disabled]="!usuarioForm.form.valid">Registrar</button>
+   
+
+  </form>
+</div>
+
+<div [hidden]="!submitted" style="margin-left: 350px; width: 470px;">
+  <p class="script"><span>Información del usuario</span></p><br>
+    <div class="row">
+      <div class="col-xs-3" style="color: #295F72; font-size: 20px;">Nombre: </div>
+      <div class="col-xs-9" style="font-size: 18px;">{{ model.nombre }}</div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-3" style="color: #295F72; font-size: 20px;">Apellidos: </div>
+      <div class="col-xs-9" style="font-size: 18px;">{{ model.apellidos }}</div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-3" style="color: #295F72; font-size: 20px;">Genero: </div>
+      <div class="col-xs-9" style="font-size: 18px;">{{ model.genero }}</div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-3" style="color: #295F72; font-size: 20px;">Salario: </div>
+        <div class="col-xs-9" style="font-size: 18px;">{{ model.salario }}</div>
+      </div>
+    <br>
+    <button class="btn btn-primary" (click)="submitted=false" style="background-color: #00C2A9; font-weight: bold; font-size: 15px;">Regresar</button>
+  </div>
+</div>
